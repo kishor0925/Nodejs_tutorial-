@@ -1,12 +1,23 @@
+const fs = require("fs");
+const path = require("path");
 
-// const os = require('os');
+if (fs.existsSync("./files/Hello.txt")) {
+  fs.readFile(path.join(__dirname, "files", "Hello.txt"), "utf-8" , (err, data) => {
+    if(err){
+        console.error(err);
+        return;
+    }
+    console.log('File read: ', data) 
+  })
 
-// console.log(os.type());
-// console.log(os.version());
-// console.log(os.homedir());
+} else {
+  console.log("File not exist");
+}
 
-// const path = require('path');
-// const math = require('./Math')
-
-// console.log(math.modulos(5,3));
-
+fs.writeFile(path.join(__dirname, 'files' , 'Helloo.txt'), 'File Writedd' , (err) => {
+    if(err) {
+        console.log(err.message);
+        return;
+    }
+    console.log('File Writted..');
+} )
